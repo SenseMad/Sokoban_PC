@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e843ee075e304954891d1ba30cd9a49a, type: 3}
+  m_Name: ButtonIcons
+  m_EditorClassIdentifier: 
+  _buttons:
+  - _typeDevice: 0
+    _buttons:
+    - TypeButton: 0
+      SpriteButton: {fileID: 21300000, guid: 6f36966658ddce64b8c55522c52d59c7, type: 3}
+    - TypeButton: 1
+      SpriteButton: {fileID: 21300000, guid: e2ffcbb542a973a4bab57d7237b6a403, type: 3}
+    - TypeButton: 2
+      SpriteButton: {fileID: 21300000, guid: 0734f744fb2f03b428b8da9ebb19dd7f, type: 3}
+    - TypeButton: 3
+      SpriteButton: {fileID: 21300000, guid: 32745557ddbe7764e82386a514bec6a5, type: 3}
+    - TypeButton: 4
+      SpriteButton: {fileID: 21300000, guid: 986102f73ad46ce4d9c9a0acec45c58a, type: 3}
+  - _typeDevice: 1
+    _buttons:
+    - TypeButton: 0
+      SpriteButton: {fileID: 21300000, guid: 6cc7ca82241b9fa47a53eb0f1679f7b9, type: 3}
+    - TypeButton: 1
+      SpriteButton: {fileID: 21300000, guid: 4377c07e19eefda47a1ed7095a25cb63, type: 3}
+    - TypeButton: 2
+      SpriteButton: {fileID: 21300000, guid: f6540966cac831346b73130dea4ea966, type: 3}
+    - TypeButton: 3
+      SpriteButton: {fileID: 21300000, guid: 98fb0d487551c8f4a8907735c89563ac, type: 3}
+    - TypeButton: 4
+      SpriteButton: {fileID: 21300000, guid: a62f74fd1c8a7784f928ca65df8ac7c9, type: 3}
+  - _typeDevice: 2
+    _buttons:
+    - TypeButton: 0
+      SpriteButton: {fileID: 21300000, guid: d41c97339bf68a94c9b11841293f7af4, type: 3}
+    - TypeButton: 1
+      SpriteButton: {fileID: 21300000, guid: b0b5b63db58f19445b4d07566f9cad65, type: 3}
+    - TypeButton: 2
+      SpriteButton: {fileID: 21300000, guid: cddb3f5ab7c8b15459b8e528c63dee12, type: 3}
+    - TypeButton: 3
+      SpriteButton: {fileID: 21300000, guid: 510f95553c64dc44fbbe800c620c05a1, type: 3}
+    - TypeButton: 4
+      SpriteButton: {fileID: 21300000, guid: c0f1f17874822c84f892112ae399bdec, type: 3}

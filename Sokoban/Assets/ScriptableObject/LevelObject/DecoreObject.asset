@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8d257fb3980644dadcf0d84473e3aa, type: 3}
+  m_Name: DecoreObject
+  m_EditorClassIdentifier: 
+  _typeObjects: 8
+  _listBlockObjects:
+  - {fileID: 2269869128466168058, guid: d0b8cc35b925f02479a5b27066dedddf, type: 3}
+  - {fileID: 8843558549347993047, guid: 7c5375c5a3261bf45a09b50d9e72a43e, type: 3}
+  - {fileID: 1034403316296172025, guid: a6a410bb90b4e7b4aa09a7acbfdd7ebd, type: 3}
+  - {fileID: 1027378757427457212, guid: d8bef96ac7988f74ebc05077e0e04b6b, type: 3}
+  - {fileID: 7615324092370067041, guid: 99e8e0b1a250f82458849d45ab5e86d8, type: 3}
+  - {fileID: 622714752356043040, guid: 6011868c317d3424ab144827544f7b70, type: 3}

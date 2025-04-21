@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: New Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 0
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 5ffc1c3c119dd4a4ea199ec258ab3919, type: 3}
+    - {fileID: 2800000, guid: a0451cb17ab6b034d866455b5d3e5c72, type: 3}
+    - {fileID: 2800000, guid: ffe3f592ef5acc04abcfcf2d75eaeadc, type: 3}
+    - {fileID: 2800000, guid: a6d54e448380f4c418a73e37851f39f5, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - a0451cb17ab6b034d866455b5d3e5c72: 21300000
+    - ffe3f592ef5acc04abcfcf2d75eaeadc: 21300000
+    - a6d54e448380f4c418a73e37851f39f5: 21300000
+    - 5ffc1c3c119dd4a4ea199ec258ab3919: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a0451cb17ab6b034d866455b5d3e5c72, type: 3}
+  - {fileID: 21300000, guid: ffe3f592ef5acc04abcfcf2d75eaeadc, type: 3}
+  - {fileID: 21300000, guid: a6d54e448380f4c418a73e37851f39f5, type: 3}
+  - {fileID: 21300000, guid: 5ffc1c3c119dd4a4ea199ec258ab3919, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Chapter_2
+  - Snagbox_Game
+  - Unity
+  - Chapter_1
+  m_RenderDataMap: {}
+  m_Tag: New Sprite Atlas
+  m_IsVariant: 0

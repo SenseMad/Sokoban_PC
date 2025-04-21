@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8d257fb3980644dadcf0d84473e3aa, type: 3}
+  m_Name: DoorObjects
+  m_EditorClassIdentifier: 
+  _typeObjects: 6
+  _listBlockObjects:
+  - {fileID: 7853717178279948346, guid: f0f540e849fb6cb43bd01fbb2e83612f, type: 3}
+  - {fileID: 4056714909818465753, guid: 664afc236037c7b49be527fd3e7750dd, type: 3}
+  - {fileID: 3547099810356503116, guid: 1c0417172e5c7304a8c1f1cf8d34a494, type: 3}
+  - {fileID: 2408833333278897685, guid: 151d0c2bc736f984887de245e596e25c, type: 3}

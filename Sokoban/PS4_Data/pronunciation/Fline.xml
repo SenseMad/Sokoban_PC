@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectDataExport>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>Japanese</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f r i n i</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f r i n</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>EnglishUS</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n iy</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ay n</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n ih</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>EnglishUK</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ay n</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n iy</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n ih</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>French</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l uN E</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n i</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>German</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n ae</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n i</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>Spanish</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n e</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n i</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>Italian</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n e</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l z i n</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l i n i</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>Russian</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n i</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+  <PhonemeData>
+    <Word>Fline</Word>
+    <TargetLanguage>Polish</TargetLanguage>
+    <Display>true</Display>
+    <PhonemeParameterDataModelCollection>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l iy n e</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l iy n</Phoneme>
+        <IsCheckedP>true</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n iy</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+      <PhonemeParameterDataModel>
+        <Phoneme>f l ih n</Phoneme>
+        <IsCheckedP>false</IsCheckedP>
+        <IsImported>false</IsImported>
+      </PhonemeParameterDataModel>
+    </PhonemeParameterDataModelCollection>
+  </PhonemeData>
+</ProjectDataExport>

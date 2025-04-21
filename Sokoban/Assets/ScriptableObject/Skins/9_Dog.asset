@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04481add1bc3ad2488af11651a4e8960, type: 3}
+  m_Name: 9_Dog
+  m_EditorClassIdentifier: 
+  _indexSkin: 9
+  _priceSkin: 10
+  _skinSprite: {fileID: 21300000, guid: 2975b9fa297d15548911abe0a852d22b, type: 3}
+  _objectSkin: {fileID: 919132149155446097, guid: 01ed50b91d040dc4e8b5b349465cb30f, type: 3}

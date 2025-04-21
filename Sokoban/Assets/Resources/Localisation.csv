@@ -1,0 +1,57 @@
+"key","ru","en","fr","ja","ge","sp","po","ch"
+
+"OK_KEY","ОК","OK","OK","OK","OK","DE ACUERDO","ESCOLHA","选择"
+"BACK_KEY","НАЗАД","BACK","DOS","戻る","zurück","ATRÁS","ATRÁS","返回"
+"YES_KEY","ДА","YES","OUI","はい。","ja","Sí","SIM","是的"
+"NO_KEY","НЕТ","NO","NON","いいえ。","nein","NO HAY","NÃO","非也。"
+
+"PLAY_KEY","ИГРАТЬ","PLAY","JOUER","遊ぶ","spielen","JUGAR","JOGAR","游戏"
+"SETTINGS_KEY","НАСТРОЙКИ","SETTINGS","PARAMÈTRES","設定","die Einstellungen","AJUSTES","SINTONIZAÇÃO","设置"
+"SHOP_KEY","МАГАЗИН","SHOP","BOUTIQUE","ショップ","Geschäft","Tienda","Loja","商店"
+"AUTHORS_KEY","АВТОРЫ","AUTHORS","AUTEURS","著者","AUTOREN","AUTORES","AUTOR","作者"
+"EXIT_KEY","ВЫХОД","EXIT","SORTIE","出口","Ausgang","SALIDA","SAÍDA","出口"
+
+
+
+"SOUNDS_KEY","ЗВУКИ","SOUNDS","SONS","音","klaenge","SONIDOS","SOM","声音"
+"MUSIC_VOLUME_KEY","ГРОМКОСТЬ МУЗЫКИ","MUSIC VOLUME","VOLUME DE LA MUSIQUE","音楽のボリューム","MUSIKLAUTSTÄRKE","VOLUMEN DE LA MÚSICA","VOLUME DA MÚSICA","音乐音量"
+"SOUND_VOLUME_KEY","ГРОМКОСТЬ ЗВУКА","SOUND VOLUME","VOLUME SONORE","音量","LAUTSTÄRKE","VOLUMEN","VOLUME DO SOM","音量"
+"LANGUAGE_KEY","ЯЗЫК","LANGUAGE","LANGUE","言語","Sprache","IDIOMA","IDIOMA","语言"
+
+"VIDEO_KEY","ВИДЕО","VIDEO","VIDÉO","ビデオ","das Video","VÍDEO","Vídeo","短片"
+"FULL_SCREEN_KEY","ПОЛНЫЙ ЭКРАН","FULL SCREEN","PLEIN ÉCRAN","フルスクリーン","VOLLBILD","PANTALLA COMPLETA","ECRÃ COMPLETO","全屏"
+"SCREEN_RESOLUTION_KEY","РАЗРЕШЕНИЕ ЭКРАНА","SCREEN RESOLUTION","RÉSOLUTION D'ÉCRAN","画面解像度","BILDSCHIRMAUFLÖSUNG","RESOLUCIÓN DE PANTALLA","RESOLUÇÃO DA TELA","屏幕分辨率"
+"VERT_SYNCING_KEY","ВЕРТ. СИНХРОНИЗАЦИЯ","VERT. SYNCING","WERTH. SYNCHRONISATION","垂直同期","VERTIKALE SYNCHRONISATION","SINCRONIZACIÓN VERTICAL","SINCRONIZAÇÃO VERTICAL","垂直同步"
+
+"LANGUAGE_KEY","ЯЗЫК","LANGUAGE","LANGUE","言語","Sprache","IDIOMA","IDIOMA","语言"
+"LANGUAGE_CHANGE_KEY","СМЕНА ЯЗЫКА","LANGUAGE CHANGE","CHANGER DE LANGUE","言語変更","SPRACHE ÄNDERN","CAMBIO DE IDIOMA","MUDANÇA DE IDIOMA","语言变化"
+"LANGUAGE_SELECTION_KEY","ВЫБОР ЯЗЫКА","LANGUAGE SELECTION","CHOISIR LA LANGUE","言語選択","SPRACHAUSWAHL","SELECCIÓN DE IDIOMA","SELECIONAR IDIOMA","语言选择"
+
+"SAVES_KEY","СОХРАНЕНИЯ","SAVES","CONSERVATIONS","セーブ","ERHALTUNGEN","CONSERVACIÓN","CONSERVAÇÃO","储蓄"
+"DELETE_SAVES_KEY","УДАЛИТЬ СОХРАНЕНИЯ","DELETE SAVES","SUPPRIMER ENREGISTRER","保存の削除","SPEICHERN LÖSCHEN","ELIMINAR GUARDAR","APAGAR AS GRAVAÇÕES","删除保存"
+
+
+
+"CAMERA_ROTATION_KEY","ВРАЩЕНИЕ КАМЕРЫ","CAMERA ROTATION","Rotation de la caméra","カメラ回転","Drehen der Kamera","Rotación de la cámara","Rotação da câmera","相机旋转"
+
+"LOCATION_SELECTION_KEY","ВЫБОР ЛОКАЦИИ","LOCATION SELECTION","SÉLECTION DE L'EMPLACEMENT","場所の選択","STANDORT AUSWÄHLEN","SELECCIÓN DE UBICACIÓN","SELEÇÃO DE LOCALIZAÇÃO","地点选择"
+"CHAPTER_1_KEY","ГЛАВА 1","CHAPTER 1","CHAPITRE 1","第1章","KAPITEL 1","Capítulo 1","Capítulo 1","第一章"
+"CHAPTER_2_KEY","ГЛАВА 2","CHAPTER 2","CHAPITRE 2","第2章","KAPITEL 2","Capítulo 2","Capítulo 2","第二章"
+"SELECT_LEVEL_KEY","ВЫБОР УРОВНЯ","SELECT LEVEL","SÉLECTION DE NIVEAU","レベル選択","EBENE AUSWÄHLEN","SELECCIÓN DE NIVEL","SELEÇÃO DE NÍVEL","级别选择"
+
+"PAUSE_KEY","ПАУЗА","PAUSE","PAUSE","一時停止","PAUSE","PAUSA","PAUSA","暂停"
+"CONTINUE_KEY","ПРОДОЛЖИТЬ","CONTINUE","CONTINUER","履歴書","fortfahren","CONTINUAR","CONTINUAR","简历"
+"RESTART_KEY","ПЕРЕЗАПУСК","RESTART","REDÉMARRAGE","再起動","NEUSTART","REINICIAR","Reiniciar","重新启动"
+"EXIT_THE_MENU_KEY","ВЫЙТИ В МЕНЮ","EXIT THE MENU","QUITTER LE MENU","メニューを終了します","MENÜ VERLASSEN","SALIR EN EL MENÚ","IR PARA O MENU","退出菜单"
+
+"TIME_KEY","ВРЕМЯ","TIME","TEMPS","時間","ZEIT","TIEMPO","TEMPO","时间"
+"MOVES_KEY","ХОДОВ","MOVES","DÉPLACER","動く","UMZUG","MOVER","MOVER","移动"
+
+"LEVEL_COMPLETED_KEY","УРОВЕНЬ ЗАВЕРШЕН","LEVEL COMPLETED","NIVEAU TERMINÉ","レベル完了","LEVEL ABGESCHLOSSEN","NIVEL COMPLETADO","NÍVEL CONCLUÍDO","水平已完成"
+"NEXT_LEVEL_KEY","СЛЕДУЮЩИЙ УРОВЕНЬ","NEXT LEVEL","NIVEAU SUIVANT","次のレベル","NÄCHSTE STUFE","SIGUIENTE NIVEL","PRÓXIMO NÍVEL","下一阶段"
+
+"THANK_YOU_FOR_PLAYING_KEY","СПАСИБО ЗА ИГРУ!","THANKS FOR THE GAME!","MERCI DE JOUER!","遊んでくれてありがとう！","DANKE FÜRS SPIELEN!","GRACIAS POR JUGAR!","OBRIGADO POR JOGAR!","谢谢你的演奏！"
+
+"SELECTED_KEY","ВЫБРАН","SELECTED","SÉLECTIONNÉ","選択された","Ausgewählt","SELECCIONADO","Selecionado","选定"
+"PURCHASED_KEY","КУПЛЕН","PURCHASED","ACQUIS","購入した","ERWORBEN","COMPRADO","Comprado","已購買"
+"LEVEL_KEY","УРОВЕНЬ","LEVEL","NIVEAU","レベル","EBENE","NIVEL","NÍVEL","水平"
