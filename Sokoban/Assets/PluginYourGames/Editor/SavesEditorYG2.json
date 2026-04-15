@@ -1,0 +1,44 @@
+{
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 64,
+    "sokoban": {
+        "musicValue": 25,
+        "soundValue": 25,
+        "fullScreenValue": true,
+        "vSyncValue": true,
+        "currentLanguage": 6,
+        "currentActiveIndexSkin": 0,
+        "locationLastLevelPlayed": 0,
+        "indexLastLevelPlayed": 1,
+        "amountFoodCollected": 2,
+        "totalFoodCollected": 2,
+        "totalNumberMoves": 32,
+        "totalNumberMovesBox": 7,
+        "purchasedSkins": [
+            0
+        ],
+        "completedLocations": [
+            {
+                "location": 0,
+                "completedLevels": 1
+            }
+        ],
+        "levelProgressEntries": [
+            {
+                "location": 0,
+                "levelNumber": 1,
+                "progress": {
+                    "numberMoves": 5,
+                    "timeOnLevel": 9.155379295349121
+                }
+            }
+        ]
+    }
+}
