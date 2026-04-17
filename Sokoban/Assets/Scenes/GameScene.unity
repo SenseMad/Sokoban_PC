@@ -6481,15 +6481,9 @@ MonoBehaviour:
   - Language: 1
     LanguageName: English
     LanguageSprite: {fileID: 21300000, guid: f1fc77c293e358e4387781d10234cd44, type: 3}
-  - Language: 5
-    LanguageName: "Portugu\xEAs"
-    LanguageSprite: {fileID: 21300000, guid: 0be413f5c73ee5d47b3ec332d0ab3156, type: 3}
   - Language: 6
     LanguageName: "\u0420\u0443\u0441\u0441\u043A\u0438\u0439"
     LanguageSprite: {fileID: 21300000, guid: e8bcf3ccd43aef747a95dc60978f936e, type: 3}
-  - Language: 7
-    LanguageName: "Espa\xF1ol"
-    LanguageSprite: {fileID: 21300000, guid: ea9e1679cfc1c4049aea2f6e0f75e7c6, type: 3}
 --- !u!1 &553354457
 GameObject:
   m_ObjectHideFlags: 0
@@ -19544,9 +19538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _russianFont: {fileID: 11400000, guid: f0553109562166045b62aff867269a85, type: 2}
-  _englishFont: {fileID: 11400000, guid: 37c8fc509f386104eae36ae31f67a092, type: 2}
-  _spanishFont: {fileID: 11400000, guid: 37c8fc509f386104eae36ae31f67a092, type: 2}
-  _portugueseFont: {fileID: 11400000, guid: 85e5778c500a1e74197da05af2617dfc, type: 2}
+  _englishFont: {fileID: 11400000, guid: f0553109562166045b62aff867269a85, type: 2}
 --- !u!114 &1641604057
 MonoBehaviour:
   m_ObjectHideFlags: 0

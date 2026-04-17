@@ -9,11 +9,11 @@ public class FontAsset : MonoBehaviour
     [SerializeField, Tooltip("Английский шрифт")]
     private TMP_FontAsset _englishFont;
 
-    [SerializeField, Tooltip("Испанский шрифт")]
+    /*[SerializeField, Tooltip("Испанский шрифт")]
     private TMP_FontAsset _spanishFont;
 
     [SerializeField, Tooltip("Португальский шрифт")]
-    private TMP_FontAsset _portugueseFont;
+    private TMP_FontAsset _portugueseFont;*/
 
     public TMP_FontAsset GetFont(Language language)
     {
@@ -25,11 +25,11 @@ public class FontAsset : MonoBehaviour
             case Language.English:
                 return _englishFont;
 
-            case Language.Spanish:
+            /*case Language.Spanish:
                 return _spanishFont != null ? _spanishFont : _englishFont;
 
             case Language.Portuguese:
-                return _portugueseFont != null ? _portugueseFont : _englishFont;
+                return _portugueseFont != null ? _portugueseFont : _englishFont;*/
 
             default:
                 return _englishFont;

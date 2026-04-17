@@ -1,7 +1,7 @@
-using UnityEngine;
-using System.Collections.Generic;
-
 using Sokoban.GameManagement;
+using System.Collections.Generic;
+using UnityEngine;
+using YG;
 
 namespace Sokoban.UI
 {
@@ -23,6 +23,20 @@ namespace Sokoban.UI
             gameManager = GameManager.Instance;
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            YG2.onSwitchLang += OnSwitchLang;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            YG2.onSwitchLang -= OnSwitchLang;
+        }
+
         private void Start()
         {
             AddLanguagesList();
@@ -32,6 +46,11 @@ namespace Sokoban.UI
         protected override void Update()
         {
             MoveMenuVertically(1);
+        }
+
+        private void OnSwitchLang(string lang)
+        {
+            SetCurrentLanguageButton();
         }
 
         private void AddLanguagesList()
@@ -60,6 +79,9 @@ namespace Sokoban.UI
                 indexActiveButton = 0;
                 return;
             }
+
+            for (int i = 0; i < languageButtons.Count; i++)
+                languageButtons[i].EnableDisableLanguageDisplay(false);
 
             indexActiveButton = GetLanguageButtonIndex(gameManager.SettingsData.CurrentLanguage);
 

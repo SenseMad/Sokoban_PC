@@ -9,13 +9,13 @@ public class LocalisationSystem : SingletonInSceneNoInstance<LocalisationSystem>
 
     private static Dictionary<string, string> localisedRU;
     private static Dictionary<string, string> localisedEN;
-    private static Dictionary<string, string> localisedSP;
+    /*private static Dictionary<string, string> localisedSP;
     private static Dictionary<string, string> localisedPO;
 
     private static Dictionary<string, string> localisedFR;
     private static Dictionary<string, string> localisedJA;
     private static Dictionary<string, string> localisedGE;
-    private static Dictionary<string, string> localisedCH;
+    private static Dictionary<string, string> localisedCH;*/
 
     public static bool IsInit;
 
@@ -61,9 +61,7 @@ public class LocalisationSystem : SingletonInSceneNoInstance<LocalisationSystem>
     private static readonly Language[] _enabledLanguages =
     {
         Language.Russian,
-        Language.English,
-        Language.Spanish,
-        Language.Portuguese
+        Language.English
     };
 
     /*public TMP_FontAsset GetFont()
@@ -113,8 +111,8 @@ public class LocalisationSystem : SingletonInSceneNoInstance<LocalisationSystem>
 
         localisedRU = csvLoader.GetDictionaryValues("ru");
         localisedEN = csvLoader.GetDictionaryValues("en");
-        localisedSP = csvLoader.GetDictionaryValues("sp");
-        localisedPO = csvLoader.GetDictionaryValues("po");
+        /*localisedSP = csvLoader.GetDictionaryValues("sp");
+        localisedPO = csvLoader.GetDictionaryValues("po");*/
 
         IsInit = true;
     }
@@ -138,7 +136,7 @@ public class LocalisationSystem : SingletonInSceneNoInstance<LocalisationSystem>
                     return value;
                 break;
 
-            case Language.Spanish:
+            /*case Language.Spanish:
                 if (localisedSP != null && localisedSP.TryGetValue(key, out value))
                     return value;
                 break;
@@ -146,7 +144,7 @@ public class LocalisationSystem : SingletonInSceneNoInstance<LocalisationSystem>
             case Language.Portuguese:
                 if (localisedPO != null && localisedPO.TryGetValue(key, out value))
                     return value;
-                break;
+                break;*/
         }
 
         if (localisedEN != null && localisedEN.TryGetValue(key, out string fallbackValue))
@@ -224,8 +222,8 @@ public class LocalisationSystem : SingletonInSceneNoInstance<LocalisationSystem>
         {
             Language.Russian => "Русский",
             Language.English => "English",
-            Language.Spanish => "Español",
-            Language.Portuguese => "Português",
+            /*Language.Spanish => "Español",
+            Language.Portuguese => "Português",*/
             _ => "English"
         };
     }

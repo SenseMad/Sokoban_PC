@@ -7,7 +7,7 @@
         false,
         false
     ],
-    "idSave": 64,
+    "idSave": 68,
     "sokoban": {
         "musicValue": 25,
         "soundValue": 25,
@@ -19,8 +19,8 @@
         "indexLastLevelPlayed": 1,
         "amountFoodCollected": 2,
         "totalFoodCollected": 2,
-        "totalNumberMoves": 32,
-        "totalNumberMovesBox": 7,
+        "totalNumberMoves": 43,
+        "totalNumberMovesBox": 12,
         "purchasedSkins": [
             0
         ],

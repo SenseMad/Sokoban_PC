@@ -17,7 +17,7 @@ PlayerSettings:
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.07058824, g: 0.09411765, b: 0.11372549, a: 1}
-  m_ShowUnitySplashScreen: 0
+  m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 0
@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: cc027f51ae68e2c4aa7759b38e19f45e, type: 3}
+  - logo: {fileID: 0}
     duration: 3
   - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
     duration: 2.5
@@ -844,26 +844,26 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
+    Android: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
     Bratwurst: UNITY_POST_PROCESSING_STACK_V2
     EmbeddedLinux: UNITY_POST_PROCESSING_STACK_V2
     GameCoreScarlett: UNITY_POST_PROCESSING_STACK_V2
     GameCoreXboxOne: UNITY_POST_PROCESSING_STACK_V2
     Kepler: UNITY_POST_PROCESSING_STACK_V2
-    LinuxHeadlessSimulation: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
-    Nintendo Switch: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
+    LinuxHeadlessSimulation: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    Nintendo Switch: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
     Nintendo Switch 2: UNITY_POST_PROCESSING_STACK_V2
-    PS4: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
-    PS5: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
+    PS4: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    PS5: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
     QNX: UNITY_POST_PROCESSING_STACK_V2
     Stadia: UNITY_POST_PROCESSING_STACK_V2
-    Standalone: UNIVERSAL_PLATFORM_STEAM;UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
+    Standalone: UNIVERSAL_PLATFORM_STEAM;UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
     VisionOS: UNITY_POST_PROCESSING_STACK_V2
-    WebGL: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
-    Windows Store Apps: PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
-    XboxOne: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
-    iPhone: PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
-    tvOS: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg
+    WebGL: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    Windows Store Apps: PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    XboxOne: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    iPhone: PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    tvOS: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
