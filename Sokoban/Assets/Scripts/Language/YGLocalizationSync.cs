@@ -36,6 +36,9 @@ public class YGLocalizationSync : MonoBehaviour
     {
         Language convertedLanguage = LanguageConverter.FromYGCode(lang);
 
+        if (LocalisationSystem.CurrentLanguage == convertedLanguage)
+            return;
+
         LocalisationSystem.CurrentLanguage = convertedLanguage;
         gameManager.SettingsData.CurrentLanguage = convertedLanguage;
         gameManager.SaveData();

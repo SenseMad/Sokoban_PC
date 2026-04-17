@@ -844,26 +844,26 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    Android: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
     Bratwurst: UNITY_POST_PROCESSING_STACK_V2
     EmbeddedLinux: UNITY_POST_PROCESSING_STACK_V2
     GameCoreScarlett: UNITY_POST_PROCESSING_STACK_V2
     GameCoreXboxOne: UNITY_POST_PROCESSING_STACK_V2
     Kepler: UNITY_POST_PROCESSING_STACK_V2
-    LinuxHeadlessSimulation: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
-    Nintendo Switch: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    LinuxHeadlessSimulation: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
+    Nintendo Switch: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
     Nintendo Switch 2: UNITY_POST_PROCESSING_STACK_V2
-    PS4: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
-    PS5: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    PS4: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
+    PS5: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
     QNX: UNITY_POST_PROCESSING_STACK_V2
     Stadia: UNITY_POST_PROCESSING_STACK_V2
-    Standalone: UNIVERSAL_PLATFORM_STEAM;UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    Standalone: UNIVERSAL_PLATFORM_STEAM;UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
     VisionOS: UNITY_POST_PROCESSING_STACK_V2
-    WebGL: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
-    Windows Store Apps: PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
-    XboxOne: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
-    iPhone: PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
-    tvOS: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;YandexGamesPlatform_yg;Localization_yg
+    WebGL: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
+    Windows Store Apps: PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
+    XboxOne: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
+    iPhone: PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
+    tvOS: UNITY_POST_PROCESSING_STACK_V2;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg;Storage_yg;Authorization_yg;Localization_yg;YandexGamesPlatform_yg;Leaderboards_yg
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

@@ -83,7 +83,8 @@ namespace Sokoban.UI
             for (int i = 0; i < languageButtons.Count; i++)
                 languageButtons[i].EnableDisableLanguageDisplay(false);
 
-            indexActiveButton = GetLanguageButtonIndex(gameManager.SettingsData.CurrentLanguage);
+            //indexActiveButton = GetLanguageButtonIndex(gameManager.SettingsData.CurrentLanguage);
+            indexActiveButton = GetLanguageButtonIndex(LocalisationSystem.CurrentLanguage);
 
             if (indexActiveButton < 0 || indexActiveButton >= languageButtons.Count)
                 indexActiveButton = 0;

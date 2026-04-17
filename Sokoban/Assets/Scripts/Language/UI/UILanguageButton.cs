@@ -50,16 +50,28 @@ namespace Sokoban.UI
             return language;
         }
 
-        public void ChangeLanguage()
+        /*public void ChangeLanguage()
         {
             if (gameManager.SettingsData.CurrentLanguage == language)
                 return;
 
+            if (LocalisationSystem.CurrentLanguage == language)
+                return;
+
+            string ygLang = LanguageConverter.ToYGCode(language);
+            YG2.SwitchLanguage(ygLang);
+        }*/
+
+        public void ChangeLanguage()
+        {
+            if (LocalisationSystem.CurrentLanguage == language)
+                return;
+
+            LocalisationSystem.CurrentLanguage = language;
             gameManager.SettingsData.CurrentLanguage = language;
             gameManager.SaveData();
 
             string ygLang = LanguageConverter.ToYGCode(language);
-
             YG2.SwitchLanguage(ygLang);
         }
 

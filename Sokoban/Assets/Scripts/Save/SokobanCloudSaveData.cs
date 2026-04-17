@@ -21,6 +21,10 @@ namespace Sokoban.Save
         public int totalNumberMoves = 0;
         public int totalNumberMovesBox = 0;
 
+        public float bestTotalTime = 0f;
+        public int bestFoodCollected = 0;
+        public int currentRunFoodCollected = 0;
+
         public List<int> purchasedSkins = new() { 0 };
         public List<LocationProgressEntry> completedLocations = new();
         public List<LevelProgressEntry> levelProgressEntries = new();

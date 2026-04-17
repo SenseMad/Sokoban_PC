@@ -1,9 +1,6 @@
 using Sokoban.GameManagement;
 using Sokoban.LevelManagement;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using YG;
 
@@ -62,7 +59,7 @@ namespace Sokoban.Save
             SaveData();
         }
 
-        private void ResetGameData(GameManager gameManager)
+        /*private void ResetGameData(GameManager gameManager)
         {
             var settingsData = gameManager.SettingsData;
 
@@ -75,6 +72,45 @@ namespace Sokoban.Save
                 vSyncValue = settingsData.VSyncValue,
 #endif
                 currentLanguage = (int)settingsData.CurrentLanguage
+            };
+
+            YG2.saves.sokoban = resetData;
+            ReadFromCloudData(resetData, gameManager);
+        }*/
+
+        private void ResetGameData(GameManager gameManager)
+        {
+            var settingsData = gameManager.SettingsData;
+
+            var resetData = new SokobanCloudSaveData
+            {
+                musicValue = settingsData.MusicValue,
+                soundValue = settingsData.SoundValue,
+
+                currentLanguage = (int)settingsData.CurrentLanguage,
+
+                currentActiveIndexSkin = 0,
+                locationLastLevelPlayed = (int)Location.Chapter_1,
+                indexLastLevelPlayed = 1,
+                amountFoodCollected = 0,
+                totalFoodCollected = 0,
+                totalNumberMoves = 0,
+                totalNumberMovesBox = 0,
+
+                bestTotalTime = 0f,
+                bestFoodCollected = 0,
+                currentRunFoodCollected = 0,
+
+                purchasedSkins = new List<int> { 0 },
+                completedLocations = new List<LocationProgressEntry>
+                {
+                    new LocationProgressEntry
+                    {
+                        location = (int)Location.Chapter_1,
+                        completedLevels = 0
+                    }
+                },
+                levelProgressEntries = new List<LevelProgressEntry>()
             };
 
             YG2.saves.sokoban = resetData;
@@ -101,6 +137,10 @@ namespace Sokoban.Save
             cloud.totalFoodCollected = progress.TotalFoodCollected;
             cloud.totalNumberMoves = progress.TotalNumberMoves;
             cloud.totalNumberMovesBox = progress.TotalNumberMovesBox;
+
+            cloud.bestTotalTime = progress.BestTotalTime;
+            cloud.bestFoodCollected = progress.BestFoodCollected;
+            cloud.currentRunFoodCollected = progress.CurrentRunFoodCollected;
 
             cloud.purchasedSkins = new List<int>(progress.PurchasedSkins);
 
@@ -181,6 +221,10 @@ namespace Sokoban.Save
             progress.TotalFoodCollected = cloud.totalFoodCollected;
             progress.TotalNumberMoves = cloud.totalNumberMoves;
             progress.TotalNumberMovesBox = cloud.totalNumberMovesBox;
+
+            progress.BestTotalTime = cloud.bestTotalTime;
+            progress.BestFoodCollected = cloud.bestFoodCollected;
+            progress.CurrentRunFoodCollected = cloud.currentRunFoodCollected;
 
             progress.PurchasedSkins = cloud.purchasedSkins != null && cloud.purchasedSkins.Count > 0
                 ? new SortedSet<int>(cloud.purchasedSkins)
@@ -274,7 +318,11 @@ namespace Sokoban.Save
                 TotalFoodCollected = progressData.TotalFoodCollected,
                 PurchasedSkins = progressData.PurchasedSkins,
                 TotalNumberMoves = progressData.TotalNumberMoves,
-                TotalNumberMovesBox = progressData.TotalNumberMovesBox
+                TotalNumberMovesBox = progressData.TotalNumberMovesBox,
+
+                BestTotalTime = progressData.BestTotalTime,
+                BestFoodCollected = progressData.BestFoodCollected,
+                CurrentRunFoodCollected = progressData.CurrentRunFoodCollected
 
                 #endregion
             };
@@ -312,6 +360,10 @@ namespace Sokoban.Save
             progressData.PurchasedSkins = parData.PurchasedSkins;
             progressData.TotalNumberMoves = parData.TotalNumberMoves;
             progressData.TotalNumberMovesBox = parData.TotalNumberMovesBox;
+
+            progressData.BestTotalTime = parData.BestTotalTime;
+            progressData.BestFoodCollected = parData.BestFoodCollected;
+            progressData.CurrentRunFoodCollected = parData.CurrentRunFoodCollected;
 
             #endregion
         }

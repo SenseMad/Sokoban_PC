@@ -7,45 +7,49 @@ using Sokoban.LevelManagement;
 
 namespace Sokoban.Save
 {
-  [Serializable]
-  public class GameData
-  {
-    #region Settings
+    [Serializable]
+    public class GameData
+    {
+        #region Settings
 
-    public int MusicValue = 25;
-    public int SoundValue = 25;
+        public int MusicValue = 25;
+        public int SoundValue = 25;
 #if !UNITY_PS4
-    public bool FullScreenValue = true;
-    public bool VSyncValue = true;
+        public bool FullScreenValue = true;
+        public bool VSyncValue = true;
 #endif
 
-    public Language CurrentLanguage = Language.English;
+        public Language CurrentLanguage = Language.English;
 
-    #endregion
+        #endregion
 
-    public int AmountFoodCollected = 0;
-    public int TotalFoodCollected = 0;
+        public int AmountFoodCollected = 0;
+        public int TotalFoodCollected = 0;
 
-    public int CurrentActiveIndexSkin = 0;
+        public float BestTotalTime = 0f;
+        public int BestFoodCollected = 0;
 
-    public SortedSet<int> PurchasedSkins = new() { 0 };
+        public int CurrentActiveIndexSkin = 0;
 
-    public int TotalNumberMoves = 0;
-    public int TotalNumberMovesBox = 0;
+        public SortedSet<int> PurchasedSkins = new() { 0 };
 
-    #region Level
+        public int TotalNumberMoves = 0;
+        public int TotalNumberMovesBox = 0;
+        public int CurrentRunFoodCollected = 0;
 
-    public Location LocationLastLevelPlayed = Location.Chapter_1;
+        #region Level
 
-    public int IndexLastLevelPlayed = 1;
+        public Location LocationLastLevelPlayed = Location.Chapter_1;
 
-    public Dictionary<Location, int> NumberCompletedLevelsLocation = new()
+        public int IndexLastLevelPlayed = 1;
+
+        public Dictionary<Location, int> NumberCompletedLevelsLocation = new()
     {
       { Location.Chapter_1, 0 }
     };
 
-    public Dictionary<Location, Dictionary<int, LevelProgressData>> LevelProgressData = new();
+        public Dictionary<Location, Dictionary<int, LevelProgressData>> LevelProgressData = new();
 
-    #endregion
-  }
+        #endregion
+    }
 }

@@ -282,6 +282,8 @@ namespace Sokoban.LevelManagement
 
             GameManager.Instance.ProgressData.AmountFoodCollected += tempAmountFoodCollected;
             GameManager.Instance.ProgressData.TotalFoodCollected += tempAmountFoodCollected;
+            GameManager.Instance.ProgressData.CurrentRunFoodCollected += tempAmountFoodCollected;
+
             tempAmountFoodCollected = 0;
 
             audioManager.OnPlaySound?.Invoke(levelSounds.LevelComplete);
@@ -413,13 +415,15 @@ namespace Sokoban.LevelManagement
         {
             gameManager.ProgressData.SaveProgressLevelData(_currentLevelProgressData, _currentLevelData.Location, _currentLevelData.LevelNumber);
 
+            gameManager.ProgressData.TryUpdateLeaderboardRecords(_currentLevelData.Location, _currentLevelData.LevelNumber);
+
             gameManager.ProgressData.OpenNextLevel(_currentLevelData.Location, _currentLevelData.LevelNumber);
 
-            if (gameManager.Achievements != null)
+            /*if (gameManager.Achievements != null)
             {
                 gameManager.Achievements.UpdateAchivementLevels();
                 gameManager.Achievements.UpdateAchivementChapter();
-            }
+            }*/
 
             gameManager.SaveData();
         }
