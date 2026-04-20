@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-
 using Sokoban.GameManagement;
 using Sokoban.LevelManagement;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Sokoban.UI
 {
@@ -51,30 +51,12 @@ namespace Sokoban.UI
 
             _musicValue.OnValueChanged += MusicValue_OnValueChanged;
             _soundValue.OnValueChanged += SoundValue_OnValueChanged;
-/*#if !UNITY_PS4
-            _fullscreenValue.OnValueChanged += FullscreenValue_OnValueChanged;
-            _resolutionValue.OnValueChanged += ResolutionValue_OnValueChanged;
-            _vSyncValue.OnValueChanged += VSyncValue_OnValueChanged;
-#else
-      _videoTitle.gameObject.SetActive(false);
-      _fullscreenValue.gameObject.SetActive(false);
-      _resolutionValue.gameObject.SetActive(false);
-      _vSyncValue.gameObject.SetActive(false);
-#endif*/
         }
 
         private void Start()
         {
             if (_musicValue) spinBoxBases.Add(_musicValue);
             if (_soundValue) spinBoxBases.Add(_soundValue);
-/*#if !UNITY_PS4
-            if (_fullscreenValue != null)
-                spinBoxBases.Add(_fullscreenValue);
-            if (_resolutionValue != null)
-                spinBoxBases.Add(_resolutionValue);
-            if (_vSyncValue != null)
-                spinBoxBases.Add(_vSyncValue);
-#endif*/
             if (_languageButton) spinBoxBases.Add(_languageButton);
             if (_deleteSavesButton) spinBoxBases.Add(_deleteSavesButton);
             isGameRunning = true;
@@ -115,7 +97,12 @@ namespace Sokoban.UI
 
             Button[] buttons = GetComponentsInChildren<Button>(false);
             foreach (var button in buttons)
+            {
+                if (button.GetComponent<WithoutNavigation>())
+                    continue;
+
                 _listButtons.Add(button);
+            }
 
             indexActiveButton = 0;
 
@@ -134,12 +121,6 @@ namespace Sokoban.UI
 
             _musicValue.SetValueWithoutNotify(gameManager.SettingsData.MusicValue);
             _soundValue.SetValueWithoutNotify(gameManager.SettingsData.SoundValue);
-/*#if !UNITY_PS4
-            _fullscreenValue.SetValueWithoutNotify(gameManager.SettingsData.FullScreenValue);
-            _resolutionValue.SetValueWithoutNotify(gameManager.SettingsData.CurrentSelectedResolution);
-            _resolutionValue.UpdateText(UpdateResolutionText());
-            _vSyncValue.SetValueWithoutNotify(gameManager.SettingsData.VSyncValue);
-#endif*/
         }
 
         protected override void OnDisable()
@@ -153,11 +134,6 @@ namespace Sokoban.UI
         {
             _musicValue.OnValueChanged -= MusicValue_OnValueChanged;
             _soundValue.OnValueChanged -= SoundValue_OnValueChanged;
-/*#if !UNITY_PS4
-            _fullscreenValue.OnValueChanged -= FullscreenValue_OnValueChanged;
-            _resolutionValue.OnValueChanged -= ResolutionValue_OnValueChanged;
-            _vSyncValue.OnValueChanged -= VSyncValue_OnValueChanged;
-#endif*/
         }
 
         //======================================
@@ -173,52 +149,6 @@ namespace Sokoban.UI
             gameManager.SettingsData.SoundValue = parValue;
             Sound();
         }
-
-#if !UNITY_PS4
-        private void FullscreenValue_OnValueChanged(bool parValue)
-        {
-            gameManager.SettingsData.FullScreenValue = parValue;
-            Screen.fullScreen = parValue;
-
-            Sound();
-        }
-
-        private void ResolutionValue_OnValueChanged(int parValue)
-        {
-            /*List<Resolution> resolutions = gameManager.SettingsData.Resolutions;
-            if (parValue > resolutions.Count - 1)
-            {
-                parValue = 0;
-                _resolutionValue.SetValueWithoutNotify(0);
-            }
-
-            if (parValue < 0)
-            {
-                parValue = resolutions.Count - 1;
-                _resolutionValue.SetValueWithoutNotify(resolutions.Count - 1);
-            }
-
-            gameManager.SettingsData.CurrentSelectedResolution = parValue;
-            _resolutionValue.UpdateText(UpdateResolutionText());
-
-            gameManager.SettingsData.ApplyResolution();
-            Sound();*/
-        }
-
-        private string UpdateResolutionText()
-        {
-            return $"{gameManager.SettingsData.GetResolution().width} X {gameManager.SettingsData.GetResolution().height}";
-        }
-
-        private void VSyncValue_OnValueChanged(bool parValue)
-        {
-            gameManager.SettingsData.VSyncValue = parValue;
-
-            gameManager.SettingsData.ApplyResolution();
-
-            Sound();
-        }
-#endif
 
         private void ChangeIconSelectedLanguage(Sprite parSprite, string parText)
         {

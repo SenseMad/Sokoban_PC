@@ -4,133 +4,152 @@ using TMPro;
 
 namespace Sokoban.UI
 {
-  public abstract class SpinBoxBase : MonoBehaviour
-  {
-    [SerializeField] protected TextMeshProUGUI _fieldNameText;
-    [SerializeField] protected Image _leftArrow;
-    [SerializeField] protected Image _rightArrow;
-
-    [SerializeField] private bool _enableLeft;
-    [SerializeField] private bool _enableRight;
-    [SerializeField] private bool isSelected;
-
-    //--------------------------------------
-
-    private InputHandler inputHandler;
-
-    private readonly float timeMoveNextValue = 0.2f;
-    private float nextTimeMoveNextValue = 0.0f;
-
-    //======================================
-
-    public bool EnableLeft
+    public abstract class SpinBoxBase : MonoBehaviour
     {
-      get => _enableLeft;
-      set
-      {
-        _enableLeft = value;
-        _leftArrow.color = _enableLeft ? ColorsGame.SELECTED_COLOR : ColorsGame.DISABLE_COLOR;
-      }
-    }
+        [SerializeField] protected TextMeshProUGUI _fieldNameText;
+        [SerializeField] protected Image _leftArrow;
+        [SerializeField] protected Image _rightArrow;
+        [SerializeField] protected Button _leftButton;
+        [SerializeField] protected Button _rightButton;
 
-    public bool EnableRight
-    {
-      get => _enableRight;
-      set
-      {
-        _enableRight = value;
-        _rightArrow.color = _enableRight ? ColorsGame.SELECTED_COLOR : ColorsGame.DISABLE_COLOR;
-      }
-    }
+        [SerializeField] private bool _enableLeft;
+        [SerializeField] private bool _enableRight;
+        [SerializeField] private bool isSelected;
 
-    public bool IsSelected
-    {
-      get => isSelected;
-      set
-      {
-        isSelected = value;
-        if (isSelected) { OnSelected(); }
-        else { OnDeselected(); }
-      }
-    }
+        //--------------------------------------
 
-    //======================================
+        private InputHandler inputHandler;
 
-    protected virtual void Awake()
-    {
-      inputHandler = InputHandler.Instance;
-    }
+        private readonly float timeMoveNextValue = 0.2f;
+        private float nextTimeMoveNextValue = 0.0f;
 
-    protected virtual void OnDisable()
-    {
-      //IsSelected = false;
-    }
+        //======================================
 
-    protected virtual void Update()
-    {
-      ChangeValue();
-    }
-
-    //======================================
-
-    /// <summary>
-    /// »зменить значение
-    /// </summary>
-    private void ChangeValue()
-    {
-      if (_leftArrow == null && _rightArrow == null) { return; }
-      if (!IsSelected) { return; }
-
-      if (Time.time > nextTimeMoveNextValue)
-      {
-        nextTimeMoveNextValue = Time.time + timeMoveNextValue;
-
-        if (inputHandler.GetChangingValuesInput() < 0)
+        public bool EnableLeft
         {
-          if (_enableLeft)
-          {
-            OnLeft();
-          }
+            get => _enableLeft;
+            set
+            {
+                _enableLeft = value;
+                _leftArrow.color = _enableLeft ? ColorsGame.SELECTED_COLOR : ColorsGame.DISABLE_COLOR;
+            }
         }
 
-        if (inputHandler.GetChangingValuesInput() > 0)
+        public bool EnableRight
         {
-          if (_enableRight)
-          {
-            OnRight();
-          }
+            get => _enableRight;
+            set
+            {
+                _enableRight = value;
+                _rightArrow.color = _enableRight ? ColorsGame.SELECTED_COLOR : ColorsGame.DISABLE_COLOR;
+            }
         }
-      }
 
-      if (inputHandler.GetChangingValuesInput() == 0)
-      {
-        nextTimeMoveNextValue = Time.time;
-      }
+        public bool IsSelected
+        {
+            get => isSelected;
+            set
+            {
+                isSelected = value;
+                if (isSelected) { OnSelected(); }
+                else { OnDeselected(); }
+            }
+        }
+
+        //======================================
+
+        protected virtual void Awake()
+        {
+            inputHandler = InputHandler.Instance;
+
+
+        }
+
+        protected virtual void OnEnable()
+        {
+            if (_leftButton != null)
+                _leftButton.onClick.AddListener(OnLeft);
+
+            if (_rightButton != null)
+                _rightButton.onClick.AddListener(OnRight);
+        }
+
+        protected virtual void OnDisable()
+        {
+            //IsSelected = false;
+
+            if (_leftButton != null)
+                _leftButton.onClick.RemoveListener(OnLeft);
+
+            if (_rightButton != null)
+                _rightButton.onClick.RemoveListener(OnRight);
+        }
+
+        protected virtual void Update()
+        {
+            ChangeValue();
+        }
+
+        //======================================
+
+        /// <summary>
+        /// »зменить значение
+        /// </summary>
+        private void ChangeValue()
+        {
+            if (_leftArrow == null && _rightArrow == null) { return; }
+            if (!IsSelected) { return; }
+
+            if (Time.time > nextTimeMoveNextValue)
+            {
+                nextTimeMoveNextValue = Time.time + timeMoveNextValue;
+
+                if (inputHandler.GetChangingValuesInput() < 0)
+                {
+                    if (_enableLeft)
+                    {
+                        OnLeft();
+                    }
+                }
+
+                if (inputHandler.GetChangingValuesInput() > 0)
+                {
+                    if (_enableRight)
+                    {
+                        OnRight();
+                    }
+                }
+            }
+
+            if (inputHandler.GetChangingValuesInput() == 0)
+            {
+                nextTimeMoveNextValue = Time.time;
+            }
+        }
+
+        //======================================
+
+        protected abstract void OnLeft();
+        protected abstract void OnRight();
+
+        protected virtual void OnSelected()
+        {
+            _fieldNameText.color = ColorsGame.SELECTED_COLOR;
+
+            if (_leftArrow == null && _rightArrow == null) { return; }
+            _leftArrow.color = _enableLeft ? ColorsGame.SELECTED_COLOR : ColorsGame.DISABLE_COLOR;
+            _rightArrow.color = _enableRight ? ColorsGame.SELECTED_COLOR : ColorsGame.DISABLE_COLOR;
+        }
+
+        protected virtual void OnDeselected()
+        {
+            _fieldNameText.color = ColorsGame.STANDART_COLOR;
+
+            if (_leftArrow == null && _rightArrow == null) { return; }
+            _leftArrow.color = _enableLeft ? ColorsGame.STANDART_COLOR : ColorsGame.DISABLE_COLOR;
+            _rightArrow.color = _enableRight ? ColorsGame.STANDART_COLOR : ColorsGame.DISABLE_COLOR;
+        }
+
+        //======================================
     }
-
-    //======================================
-
-    protected abstract void OnLeft();
-    protected abstract void OnRight();
-
-    protected virtual void OnSelected()
-    {
-      _fieldNameText.color = ColorsGame.SELECTED_COLOR;
-
-      if (_leftArrow == null && _rightArrow == null) { return; }
-      _leftArrow.color = _enableLeft ? ColorsGame.SELECTED_COLOR : ColorsGame.DISABLE_COLOR;
-      _rightArrow.color = _enableRight ? ColorsGame.SELECTED_COLOR : ColorsGame.DISABLE_COLOR;
-    }
-
-    protected virtual void OnDeselected()
-    {
-      _fieldNameText.color = ColorsGame.STANDART_COLOR;
-
-      if (_leftArrow == null && _rightArrow == null) { return; }
-      _leftArrow.color = _enableLeft ? ColorsGame.STANDART_COLOR : ColorsGame.DISABLE_COLOR;
-      _rightArrow.color = _enableRight ? ColorsGame.STANDART_COLOR : ColorsGame.DISABLE_COLOR;
-    }
-
-    //======================================
-  }
 }

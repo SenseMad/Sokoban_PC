@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YandexManager;
+using YG;
 
 namespace Sokoban.UI
 {
@@ -20,6 +21,9 @@ namespace Sokoban.UI
 
         [Space(10)]
         [SerializeField] private List<GameObject> _listDisabledObjects = new();
+
+        [Header("Mobile Button")]
+        [SerializeField] private Button _backButton;
 
         //--------------------------------------
 
@@ -46,7 +50,30 @@ namespace Sokoban.UI
         {
             base.OnEnable();
 
+            if (YG2.envir.isMobile)
+            {
+                if (_backButton != null)
+                {
+                    _backButton.gameObject.SetActive(true);
+                    _backButton.onClick.AddListener(CloseMenu);
+                }
+            }
+
             _isStartingLevel = false;
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (YG2.envir.isMobile)
+            {
+                if (_backButton != null)
+                {
+                    _backButton.gameObject.SetActive(false);
+                    _backButton.onClick.RemoveListener(CloseMenu);
+                }
+            }
         }
 
         protected override void Update()

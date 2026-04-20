@@ -4,224 +4,246 @@ using UnityEngine.UI;
 
 using Sokoban.LevelManagement;
 using Sokoban.GameManagement;
+using YG;
 
 namespace Sokoban.UI
 {
-  public class UILocationSelectMenu : MenuUI
-  {
-    [SerializeField] private RectTransform _locationSelectPanel;
-
-    [Space(10)]
-    [SerializeField] private UILocationSelectButton _prefabButtonLocationSelect;
-
-    [Space(10)]
-    [SerializeField] private Panel _panelLevelSelection;
-
-    [Space(10)]
-    [SerializeField] private List<LocationData> _locationDatas;
-
-    //--------------------------------------
-
-    private GameManager gameManager;
-
-    private UILevelSelectMenu uILevelSelectMenu;
-
-    private List<UILocationSelectButton> listUILocationSelectButton = new List<UILocationSelectButton>();
-
-    //======================================
-
-    protected override void Awake()
+    public class UILocationSelectMenu : MenuUI
     {
-      base.Awake();
+        [SerializeField] private RectTransform _locationSelectPanel;
 
-      gameManager = GameManager.Instance;
+        [Space(10)]
+        [SerializeField] private UILocationSelectButton _prefabButtonLocationSelect;
 
-      uILevelSelectMenu = _panelLevelSelection.GetComponent<UILevelSelectMenu>();
-    }
+        [Space(10)]
+        [SerializeField] private Panel _panelLevelSelection;
 
-    protected override void OnEnable()
-    {
-      DisplayLocationSelectionButtonsUI();
+        [Space(10)]
+        [SerializeField] private List<LocationData> _locationDatas;
 
-      base.OnEnable();
-    }
+        [Header("Mobile Button")]
+        [SerializeField] private Button _backButton;
 
-    protected override void OnDisable()
-    {
-      base.OnDisable();
+        //--------------------------------------
 
-      ClearButtonsUI();
-    }
+        private GameManager gameManager;
 
-    protected override void Update()
-    {
-      MoveMenuHorizontally();
-    }
+        private UILevelSelectMenu uILevelSelectMenu;
 
-    //======================================
+        private List<UILocationSelectButton> listUILocationSelectButton = new List<UILocationSelectButton>();
 
-    protected override void MoveMenuHorizontally()
-    {
-      if (_listButtons.Count == 0)
-        return;
+        //======================================
 
-      if (Time.time > nextTimeMoveNextValue)
-      {
-        nextTimeMoveNextValue = Time.time + timeMoveNextValue;
-
-        if (inputHandler.GetChangingValuesInput() > 0)
+        protected override void Awake()
         {
-          IsSelectedButton = false;
+            base.Awake();
 
-          listUILocationSelectButton[indexActiveButton].ChangeSprite(false);
+            gameManager = GameManager.Instance;
 
-          indexActiveButton++;
+            uILevelSelectMenu = _panelLevelSelection.GetComponent<UILevelSelectMenu>();
+        }
 
-          if (indexActiveButton > _listButtons.Count - 1) indexActiveButton = 0;
-          if (!gameManager.ProgressData.IsLocationOpen(listUILocationSelectButton[indexActiveButton].Location))
-            indexActiveButton = 0;
+        protected override void OnEnable()
+        {
+            DisplayLocationSelectionButtonsUI();
+            
+            if (YG2.envir.isMobile)
+            {
+                if (_backButton != null)
+                {
+                    _backButton.gameObject.SetActive(true);
+                    _backButton.onClick.AddListener(CloseMenu);
+                }
+            }
+
+            base.OnEnable();
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (YG2.envir.isMobile)
+            {
+                if (_backButton != null)
+                {
+                    _backButton.gameObject.SetActive(false);
+                    _backButton.onClick.RemoveListener(CloseMenu);
+                }
+            }
+
+            ClearButtonsUI();
+        }
+
+        protected override void Update()
+        {
+            MoveMenuHorizontally();
+        }
+
+        //======================================
+
+        protected override void MoveMenuHorizontally()
+        {
+            if (_listButtons.Count == 0)
+                return;
+
+            if (Time.time > nextTimeMoveNextValue)
+            {
+                nextTimeMoveNextValue = Time.time + timeMoveNextValue;
+
+                if (inputHandler.GetChangingValuesInput() > 0)
+                {
+                    IsSelectedButton = false;
+
+                    listUILocationSelectButton[indexActiveButton].ChangeSprite(false);
+
+                    indexActiveButton++;
+
+                    if (indexActiveButton > _listButtons.Count - 1) indexActiveButton = 0;
+                    if (!gameManager.ProgressData.IsLocationOpen(listUILocationSelectButton[indexActiveButton].Location))
+                        indexActiveButton = 0;
+
+                    listUILocationSelectButton[indexActiveButton].ChangeSprite(true);
+
+                    Sound();
+                    IsSelectedButton = true;
+                }
+
+                if (inputHandler.GetChangingValuesInput() < 0)
+                {
+                    IsSelectedButton = false;
+
+                    listUILocationSelectButton[indexActiveButton].ChangeSprite(false);
+
+                    indexActiveButton--;
+
+                    if (indexActiveButton < 0) indexActiveButton = _listButtons.Count - 1;
+                    while (!gameManager.ProgressData.IsLocationOpen(listUILocationSelectButton[indexActiveButton].Location))
+                        indexActiveButton--;
+
+                    listUILocationSelectButton[indexActiveButton].ChangeSprite(true);
+
+                    Sound();
+                    IsSelectedButton = true;
+                }
+            }
+
+            if (inputHandler.GetChangingValuesInput() == 0)
+            {
+                nextTimeMoveNextValue = Time.time;
+            }
+        }
+
+        //======================================
+
+        /*private void DisplayLocationSelectionButtonsUI()
+        {
+          if (_listButtons.Count != 0)
+            return;
+
+          indexActiveButton = -1;
+
+          foreach (var location in Levels.GetListLocation())
+          {
+            if (!Levels.GetLocationTable(location))
+              continue;
+
+            UILocationSelectButton button = Instantiate(_prefabButtonLocationSelect, _locationSelectPanel);
+
+            button.Button = button.GetComponent<Button>();
+
+            if (gameManager.ProgressData.IsLocationOpen(location))
+            {
+              button.ChangeColor();
+              button.Button.interactable = true;
+              button.Button.onClick.AddListener(() => SelectLocation(location));
+              button.ChangeTextNumberLevels($"{gameManager.ProgressData.GetNumberLevelsCompleted(location)}/{Levels.GetNumberLevelsLocation(location)}");
+              indexActiveButton++;
+            }
+
+            listUILocationSelectButton.Add(button);
+            _listButtons.Add(button.GetComponent<Button>());
+            button.Initialize(location);
+          }
 
           listUILocationSelectButton[indexActiveButton].ChangeSprite(true);
+        }*/
 
-          Sound();
-          IsSelectedButton = true;
-        }
-
-        if (inputHandler.GetChangingValuesInput() < 0)
+        private void DisplayLocationSelectionButtonsUI()
         {
-          IsSelectedButton = false;
+            if (_listButtons.Count != 0)
+                return;
 
-          listUILocationSelectButton[indexActiveButton].ChangeSprite(false);
+            indexActiveButton = -1;
 
-          indexActiveButton--;
+            foreach (var location in _locationDatas)
+            {
+                if (!Levels.GetLocationTable(location.Location))
+                    continue;
 
-          if (indexActiveButton < 0) indexActiveButton = _listButtons.Count - 1;
-          while (!gameManager.ProgressData.IsLocationOpen(listUILocationSelectButton[indexActiveButton].Location))
-            indexActiveButton--;
+                UILocationSelectButton button = Instantiate(_prefabButtonLocationSelect, _locationSelectPanel);
 
-          listUILocationSelectButton[indexActiveButton].ChangeSprite(true);
+                button.Button = button.GetComponent<Button>();
 
-          Sound();
-          IsSelectedButton = true;
+                if (gameManager.ProgressData.IsLocationOpen(location.Location))
+                {
+                    button.ChangeColor();
+                    button.Button.interactable = true;
+                    button.Button.onClick.AddListener(() => SelectLocation(location.Location));
+                    button.ChangeTextNumberLevels($"{gameManager.ProgressData.GetNumberLevelsCompleted(location.Location)}/{Levels.GetNumberLevelsLocation(location.Location)}");
+                    indexActiveButton++;
+                }
+
+                listUILocationSelectButton.Add(button);
+                _listButtons.Add(button.GetComponent<Button>());
+                button.Initialize(location);
+            }
+
+            listUILocationSelectButton[indexActiveButton].ChangeSprite(true);
         }
-      }
 
-      if (inputHandler.GetChangingValuesInput() == 0)
-      {
-        nextTimeMoveNextValue = Time.time;
-      }
-    }
-
-    //======================================
-
-    /*private void DisplayLocationSelectionButtonsUI()
-    {
-      if (_listButtons.Count != 0)
-        return;
-
-      indexActiveButton = -1;
-
-      foreach (var location in Levels.GetListLocation())
-      {
-        if (!Levels.GetLocationTable(location))
-          continue;
-
-        UILocationSelectButton button = Instantiate(_prefabButtonLocationSelect, _locationSelectPanel);
-
-        button.Button = button.GetComponent<Button>();
-
-        if (gameManager.ProgressData.IsLocationOpen(location))
+        public void ClearButtonsUI()
         {
-          button.ChangeColor();
-          button.Button.interactable = true;
-          button.Button.onClick.AddListener(() => SelectLocation(location));
-          button.ChangeTextNumberLevels($"{gameManager.ProgressData.GetNumberLevelsCompleted(location)}/{Levels.GetNumberLevelsLocation(location)}");
-          indexActiveButton++;
+            for (int i = 0; i < listUILocationSelectButton.Count; i++)
+            {
+                Destroy(listUILocationSelectButton[i].gameObject);
+            }
+
+            listUILocationSelectButton = new List<UILocationSelectButton>();
+            _listButtons = new List<Button>();
         }
 
-        listUILocationSelectButton.Add(button);
-        _listButtons.Add(button.GetComponent<Button>());
-        button.Initialize(location);
-      }
-
-      listUILocationSelectButton[indexActiveButton].ChangeSprite(true);
-    }*/
-
-    private void DisplayLocationSelectionButtonsUI()
-    {
-      if (_listButtons.Count != 0)
-        return;
-
-      indexActiveButton = -1;
-
-      foreach (var location in _locationDatas)
-      {
-        if (!Levels.GetLocationTable(location.Location))
-          continue;
-
-        UILocationSelectButton button = Instantiate(_prefabButtonLocationSelect, _locationSelectPanel);
-
-        button.Button = button.GetComponent<Button>();
-
-        if (gameManager.ProgressData.IsLocationOpen(location.Location))
+        protected override void OnSelected()
         {
-          button.ChangeColor();
-          button.Button.interactable = true;
-          button.Button.onClick.AddListener(() => SelectLocation(location.Location));
-          button.ChangeTextNumberLevels($"{gameManager.ProgressData.GetNumberLevelsCompleted(location.Location)}/{Levels.GetNumberLevelsLocation(location.Location)}");
-          indexActiveButton++;
+            if (_listButtons.Count == 0)
+                return;
+
+            var listButtons = _listButtons[indexActiveButton];
+
+            var rectTransform = listButtons.GetComponent<RectTransform>();
+            rectTransform.localScale = new Vector3(1.1f, 1.1f, 1);
         }
 
-        listUILocationSelectButton.Add(button);
-        _listButtons.Add(button.GetComponent<Button>());
-        button.Initialize(location);
-      }
+        protected override void OnDeselected()
+        {
+            if (_listButtons.Count == 0)
+                return;
 
-      listUILocationSelectButton[indexActiveButton].ChangeSprite(true);
+            var listButtons = _listButtons[indexActiveButton];
+
+            var rectTransform = listButtons.GetComponent<RectTransform>();
+            rectTransform.localScale = new Vector3(1, 1, 1);
+        }
+
+        //======================================
+
+        private void SelectLocation(Location parLocation)
+        {
+            panelController.SetActivePanel(_panelLevelSelection);
+
+            uILevelSelectMenu.DisplayLevelSelectionButtonsUI(parLocation);
+        }
+
+        //======================================
     }
-
-    public void ClearButtonsUI()
-    {
-      for (int i = 0; i < listUILocationSelectButton.Count; i++)
-      {
-        Destroy(listUILocationSelectButton[i].gameObject);
-      }
-
-      listUILocationSelectButton = new List<UILocationSelectButton>();
-      _listButtons = new List<Button>();
-    }
-
-    protected override void OnSelected()
-    {
-      if (_listButtons.Count == 0)
-        return;
-
-      var listButtons = _listButtons[indexActiveButton];
-
-      var rectTransform = listButtons.GetComponent<RectTransform>();
-      rectTransform.localScale = new Vector3(1.1f, 1.1f, 1);
-    }
-
-    protected override void OnDeselected()
-    {
-      if (_listButtons.Count == 0)
-        return;
-
-      var listButtons = _listButtons[indexActiveButton];
-
-      var rectTransform = listButtons.GetComponent<RectTransform>();
-      rectTransform.localScale = new Vector3(1, 1, 1);
-    }
-
-    //======================================
-
-    private void SelectLocation(Location parLocation)
-    {
-      panelController.SetActivePanel(_panelLevelSelection);
-
-      uILevelSelectMenu.DisplayLevelSelectionButtonsUI(parLocation);
-    }
-
-    //======================================
-  }
 }

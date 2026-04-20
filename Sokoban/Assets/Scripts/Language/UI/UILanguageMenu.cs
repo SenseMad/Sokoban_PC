@@ -1,6 +1,7 @@
 using Sokoban.GameManagement;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using YG;
 
 namespace Sokoban.UI
@@ -11,6 +12,9 @@ namespace Sokoban.UI
         [SerializeField] private RectTransform _content;
         [SerializeField] private UILanguageButton _languageButton;
         [SerializeField] private List<LanguageData> _listLanguagesData = new();
+
+        [Header("Mobile Button")]
+        [SerializeField] private Button _backButton;
 
         private GameManager gameManager;
         private readonly List<UILanguageButton> languageButtons = new();
@@ -27,12 +31,30 @@ namespace Sokoban.UI
         {
             base.OnEnable();
 
+            if (YG2.envir.isMobile)
+            {
+                if (_backButton != null)
+                {
+                    _backButton.gameObject.SetActive(true);
+                    _backButton.onClick.AddListener(CloseMenu);
+                }
+            }
+
             YG2.onSwitchLang += OnSwitchLang;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
+
+            if (YG2.envir.isMobile)
+            {
+                if (_backButton != null)
+                {
+                    _backButton.gameObject.SetActive(false);
+                    _backButton.onClick.RemoveListener(CloseMenu);
+                }
+            }
 
             YG2.onSwitchLang -= OnSwitchLang;
         }
