@@ -8,7 +8,7 @@ namespace Leaderboard
 {
     public sealed class UILeaderboardMenu : MonoBehaviour
     {
-        private const string LeaderboardBestTime = "BestTotalTime";
+        private const string LeaderboardBestTime = "BestTotalTime1";
         private const string LeaderboardMostFood = "most_food_collected";
 
         [Header("Refs")]
@@ -20,6 +20,13 @@ namespace Leaderboard
         [SerializeField] private GameObject _rootPanel;
 
         //--------------------------------------
+
+        private IEnumerator Start()
+        {
+            yield return new WaitUntil(() => YG2.isSDKEnabled);
+
+            ShowBestTime();
+        }
 
         /*private void Awake()
         {
@@ -57,6 +64,9 @@ namespace Leaderboard
 
         public void ShowBestTime()
         {
+            if (!YG2.isSDKEnabled)
+                return;
+
             _leaderboard.nameLB = LeaderboardBestTime;
             _leaderboard.timeTypeConvert = true;
 

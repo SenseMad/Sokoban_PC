@@ -53,6 +53,9 @@ namespace YG
 #endif
         public GameObject playerDataPrefab;
 
+        [NestedYG(nameof(advanced))]
+        public GameObject noDataObject;
+
         public enum PlayerPhoto { NonePhoto, Small, Medium, Large };
 #if UNITY_EDITOR
         [NestedYG(nameof(advanced)), Tooltip(Langs.t_playerPhoto)]
@@ -110,6 +113,18 @@ namespace YG
                     _ => string.Empty,
                 };
             }
+
+            /*if (lbData.entries == InfoYG.NO_DATA)
+            {
+                DestroyLBList();
+                noDataObject.SetActive(true);
+                return;
+            }
+            else
+            {
+                noDataObject.SetActive(false);
+                SpawnPlayersList(lbData);
+            }*/
 #endif
             if (!advanced)
             {
@@ -126,7 +141,7 @@ namespace YG
 
                 if (lbData.entries == InfoYG.NO_DATA)
                 {
-                    players = new LBPlayerDataYG[1];
+                    /*players = new LBPlayerDataYG[1];
                     GameObject playerObj = Instantiate(playerDataPrefab, rootSpawnPlayersData);
 
                     players[0] = playerObj.GetComponent<LBPlayerDataYG>();
@@ -137,7 +152,8 @@ namespace YG
                     players[0].data.inTop = false;
                     players[0].data.currentPlayer = false;
                     players[0].data.photoSprite = null;
-                    players[0].UpdateEntries();
+                    players[0].UpdateEntries();*/
+                    return;
                 }
                 else
                 {

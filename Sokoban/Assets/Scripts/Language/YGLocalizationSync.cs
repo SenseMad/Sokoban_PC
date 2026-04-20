@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using YG;
-
 using Sokoban.GameManagement;
 
 public class YGLocalizationSync : MonoBehaviour
@@ -15,11 +14,13 @@ public class YGLocalizationSync : MonoBehaviour
     private void OnEnable()
     {
         YG2.onSwitchLang += OnSwitchLang;
+        YG2.onCorrectLang += OnCorrectLang;
     }
 
     private void OnDisable()
     {
         YG2.onSwitchLang -= OnSwitchLang;
+        YG2.onCorrectLang -= OnCorrectLang;
     }
 
     private void Start()
@@ -32,7 +33,12 @@ public class YGLocalizationSync : MonoBehaviour
         ApplyLanguage(lang);
     }
 
-    private void ApplyLanguage(string lang)
+    private void OnCorrectLang(string lang)
+    {
+        ApplyLanguage(lang);
+    }
+
+    /*private void ApplyLanguage(string lang)
     {
         Language convertedLanguage = LanguageConverter.FromYGCode(lang);
 
@@ -42,5 +48,19 @@ public class YGLocalizationSync : MonoBehaviour
         LocalisationSystem.CurrentLanguage = convertedLanguage;
         gameManager.SettingsData.CurrentLanguage = convertedLanguage;
         gameManager.SaveData();
+
+        Debug.Log($"YG lang = {lang}, applied = {convertedLanguage}");
+    }*/
+
+    private void ApplyLanguage(string lang)
+    {
+        Language convertedLanguage = LanguageConverter.FromYGCode(lang);
+
+        LocalisationSystem.CurrentLanguage = convertedLanguage;
+
+        if (gameManager != null && gameManager.SettingsData != null)
+            gameManager.SettingsData.CurrentLanguage = convertedLanguage;
+
+        //Debug.Log($"YG lang = {lang}, applied = {convertedLanguage}");
     }
 }

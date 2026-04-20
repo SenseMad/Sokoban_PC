@@ -42,6 +42,13 @@ namespace Sokoban.UI
             gameManager = GameManager.Instance;
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            _isStartingLevel = false;
+        }
+
         protected override void Update()
         {
             MoveMenuHorizontally();
@@ -151,6 +158,8 @@ namespace Sokoban.UI
 
         public void DisplayLevelSelectionButtonsUI(Location parLocation)
         {
+            _isStartingLevel = false;
+
             ClearButtonsUI();
 
             indexActiveButton = -1;
@@ -229,6 +238,39 @@ namespace Sokoban.UI
             if (!levelManager.GridLevel.IsLevelDeleted)
                 return;
 
+            _isStartingLevel = true;
+
+            gameManager.ProgressData.LocationLastLevelPlayed = levelData.Location;
+            gameManager.ProgressData.IndexLastLevelPlayed = levelData.LevelNumber - 1;
+            gameManager.SaveData();
+
+            var adService = YandexAdService.Instance;
+            bool canShowAd = adService != null && adService.CanShowInterstitial();
+
+            if (canShowAd)
+            {
+                adService.ShowInterstitial(wasShown =>
+                {
+                    LaunchLevel(levelData);
+                });
+                return;
+            }
+
+            LaunchLevel(levelData);
+        }
+
+        /*private void SelectLevel(LevelData levelData)
+        {
+            if (_isStartingLevel)
+                return;
+
+            var levelManager = LevelManager.Instance;
+            if (levelManager == null)
+                return;
+
+            if (!levelManager.GridLevel.IsLevelDeleted)
+                return;
+
             PanelController.Instance.CloseAllPanels1();
 
             levelManager.OnPauseEvent?.Invoke(false);
@@ -239,27 +281,21 @@ namespace Sokoban.UI
             gameManager.SaveData();
 
             var adService = YandexAdService.Instance;
-            if (adService != null && adService.CanShowInterstitial())
+
+            bool canShowAd = adService != null && adService.CanShowInterstitial();
+            //Debug.Log($"SelectLevel: CanShowInterstitial = {canShowAd}");
+
+            if (canShowAd)
             {
                 adService.ShowInterstitial(_ =>
                 {
                     StartLevel(levelData);
                 });
-
                 return;
             }
 
             StartLevel(levelData);
-
-            /*levelManager.ReloadLevel(levelData);
-
-            levelManager.IsLevelRunning = true;*/
-
-            /*if (gameManager.ProgressData.LevelProgressData.ContainsKey(levelData.Location))
-            {
-              Debug.Log($"{gameManager.ProgressData.LevelProgressData[levelData.Location][levelData.LevelNumber].TimeOnLevel}");
-            }*/
-        }
+        }*/
 
         private void StartLevel(LevelData levelData)
         {
@@ -270,10 +306,26 @@ namespace Sokoban.UI
                 return;
             }
 
+            _isStartingLevel = true;
+
             levelManager.ReloadLevel(levelData);
             levelManager.IsLevelRunning = true;
+        }
 
-            _isStartingLevel = true;
+        private void LaunchLevel(LevelData levelData)
+        {
+            var levelManager = LevelManager.Instance;
+            if (levelManager == null)
+            {
+                _isStartingLevel = false;
+                return;
+            }
+
+            PanelController.Instance.CloseAllPanels1();
+            levelManager.OnPauseEvent?.Invoke(false);
+
+            levelManager.ReloadLevel(levelData);
+            levelManager.IsLevelRunning = true;
         }
 
         //======================================

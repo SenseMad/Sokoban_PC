@@ -128,7 +128,7 @@ namespace Sokoban.Save
             cloud.fullScreenValue = settings.FullScreenValue;
             cloud.vSyncValue = settings.VSyncValue;
 #endif
-            cloud.currentLanguage = (int)settings.CurrentLanguage;
+            //cloud.currentLanguage = (int)settings.CurrentLanguage;
 
             cloud.currentActiveIndexSkin = progress.CurrentActiveIndexSkin;
             cloud.locationLastLevelPlayed = (int)progress.LocationLastLevelPlayed;
@@ -184,7 +184,7 @@ namespace Sokoban.Save
             settings.FullScreenValue = cloud.fullScreenValue;
             settings.VSyncValue = cloud.vSyncValue;
 #endif
-            settings.CurrentLanguage = (Language)cloud.currentLanguage;
+            //settings.CurrentLanguage = (Language)cloud.currentLanguage;
 
             progress.NumberCompletedLevelsLocation = new Dictionary<Location, int>();
             if (cloud.completedLocations != null)

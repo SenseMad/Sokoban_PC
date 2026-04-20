@@ -3,7 +3,7 @@ using YG;
 
 public sealed class LeaderboardService : MonoBehaviour
 {
-    private const string LB_TIME = "best_total_time";
+    private const string LB_TIME = "BestTotalTime1";
     private const string LB_FOOD = "most_food_collected";
 
     public void TrySendTotalTime(float newTime, float bestTime)

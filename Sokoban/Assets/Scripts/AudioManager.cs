@@ -61,6 +61,9 @@ namespace Sokoban.GameManagement
 
         private void Start()
         {
+            if (_gameMusicClips.Count == 0)
+                return;
+
             audioSource.clip = GetRandomClip();
             audioSource.Play();
         }
@@ -83,7 +86,7 @@ namespace Sokoban.GameManagement
             gameManager.SettingsData.ChangeMusicValue.RemoveListener(UpdateAudioSource);
         }
 
-        private void Update()
+        /*private void Update()
         {
             if (_gameMusicClips.Count == 0)
                 return;
@@ -95,6 +98,18 @@ namespace Sokoban.GameManagement
                     audioSource.clip = GetRandomClip();
                     audioSource.Play();
                 }
+            }
+        }*/
+
+        private void Update()
+        {
+            if (_gameMusicClips.Count == 0)
+                return;
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = GetRandomClip();
+                audioSource.Play();
             }
         }
 
@@ -116,9 +131,10 @@ namespace Sokoban.GameManagement
 
         private AudioClip GetRandomClip()
         {
-            AudioClip clip;
+            if (_gameMusicClips.Count == 1)
+                return _gameMusicClips[0];
 
-            clip = _gameMusicClips[Random.Range(0, _gameMusicClips.Count)];
+            AudioClip clip = _gameMusicClips[Random.Range(0, _gameMusicClips.Count)];
 
             while (clip == audioSource.clip)
                 clip = _gameMusicClips[Random.Range(0, _gameMusicClips.Count)];

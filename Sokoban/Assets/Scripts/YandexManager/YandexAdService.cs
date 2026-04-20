@@ -53,13 +53,45 @@ namespace YandexManager
             YG2.onPauseGame -= HandlePauseGame;
         }
 
-        public bool CanShowInterstitial()
+        /*public bool CanShowInterstitial()
         {
             if (!YandexSdkBootstrap.IsInitialized)
                 return false;
 
             return YG2.isTimerAdvCompleted && !YG2.nowAdsShow;
+        }*/
+
+        public bool CanShowInterstitial()
+        {
+            if (!YandexSdkBootstrap.IsInitialized)
+                return false;
+
+            return !YG2.nowAdsShow;
         }
+
+        /*public bool CanShowInterstitial()
+        {
+            if (!YandexSdkBootstrap.IsInitialized)
+            {
+                Debug.Log("[YG] CanShowInterstitial = false: SDK not initialized");
+                return false;
+            }
+
+            if (!YG2.isTimerAdvCompleted)
+            {
+                Debug.Log("[YG] CanShowInterstitial = false: interstitial timer not completed");
+                return false;
+            }
+
+            if (YG2.nowAdsShow)
+            {
+                Debug.Log("[YG] CanShowInterstitial = false: another ad is showing now");
+                return false;
+            }
+
+            Debug.Log("[YG] CanShowInterstitial = true");
+            return true;
+        }*/
 
         public void ShowInterstitial(Action<bool> onClosed = null)
         {

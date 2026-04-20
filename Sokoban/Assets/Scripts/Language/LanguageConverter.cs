@@ -1,6 +1,4 @@
-﻿using Sokoban.GameManagement;
-
-public static class LanguageConverter
+﻿public static class LanguageConverter
 {
     public static string ToYGCode(Language language)
     {
@@ -14,10 +12,12 @@ public static class LanguageConverter
 
     public static Language FromYGCode(string lang)
     {
-        return lang switch
+        if (string.IsNullOrEmpty(lang))
+            return Language.English;
+
+        return lang.ToLower() switch
         {
             "ru" => Language.Russian,
-            "en" => Language.English,
             _ => Language.English
         };
     }

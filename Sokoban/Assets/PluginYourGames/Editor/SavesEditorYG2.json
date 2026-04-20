@@ -7,7 +7,7 @@
         false,
         false
     ],
-    "idSave": 101,
+    "idSave": 159,
     "sokoban": {
         "musicValue": 25,
         "soundValue": 25,
@@ -17,22 +17,31 @@
         "currentActiveIndexSkin": 0,
         "locationLastLevelPlayed": 0,
         "indexLastLevelPlayed": 1,
-        "amountFoodCollected": 0,
-        "totalFoodCollected": 0,
-        "totalNumberMoves": 0,
-        "totalNumberMovesBox": 0,
-        "bestTotalTime": 0.0,
+        "amountFoodCollected": 2,
+        "totalFoodCollected": 2,
+        "totalNumberMoves": 33,
+        "totalNumberMovesBox": 7,
+        "bestTotalTime": 13.953522682189942,
         "bestFoodCollected": 0,
-        "currentRunFoodCollected": 0,
+        "currentRunFoodCollected": 2,
         "purchasedSkins": [
             0
         ],
         "completedLocations": [
             {
                 "location": 0,
-                "completedLevels": 0
+                "completedLevels": 1
             }
         ],
-        "levelProgressEntries": []
+        "levelProgressEntries": [
+            {
+                "location": 0,
+                "levelNumber": 1,
+                "progress": {
+                    "numberMoves": 0,
+                    "timeOnLevel": 0.0
+                }
+            }
+        ]
     }
 }

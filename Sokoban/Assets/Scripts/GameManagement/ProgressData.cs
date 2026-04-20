@@ -219,16 +219,33 @@ namespace Sokoban.GameManagement
             if (isNewBestTime)
             {
                 BestTotalTime = totalTime;
-                YG.YG2.SetLBTimeConvert("BestTotalTime", totalTime);
-                Debug.Log($"New best total time: {totalTime}");
+                YG.YG2.SetLBTimeConvert("BestTotalTime1", totalTime);
+                //Debug.Log($"New best total time: {totalTime}");
             }
 
-            if (isNewBestFood)
+            /*if (isNewBestFood)
             {
                 BestFoodCollected = totalFood;
                 YG.YG2.SetLeaderboard("most_food_collected", totalFood);
                 Debug.Log($"New best food collected: {totalFood}");
-            }
+            }*/
         }
+
+        /*public void TryUpdateLeaderboardRecords(Location location, int levelNumber)
+        {
+            if (location != Location.Chapter_1 || levelNumber != 1)
+                return;
+
+            float totalTime = GetTotalGameTime();
+
+            bool isNewBestTime = BestTotalTime <= 0f || totalTime < BestTotalTime;
+
+            if (isNewBestTime)
+            {
+                BestTotalTime = totalTime;
+                YG.YG2.SetLBTimeConvert("BestTotalTime1", totalTime);
+                Debug.Log($"New best total time: {totalTime}");
+            }
+        }*/
     }
 }
