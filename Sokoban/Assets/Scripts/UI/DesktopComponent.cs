@@ -10,7 +10,7 @@ public sealed class DesktopComponent : MonoBehaviour
     {
         foreach (var go in _gameObjects)
         {
-            go.SetActive(!YG2.envir.isMobile);
+            go.SetActive(YG2.envir.isDesktop);
         }
     }
 }

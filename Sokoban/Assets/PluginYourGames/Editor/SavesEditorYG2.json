@@ -7,7 +7,7 @@
         false,
         false
     ],
-    "idSave": 165,
+    "idSave": 171,
     "sokoban": {
         "musicValue": 25,
         "soundValue": 25,
@@ -19,8 +19,8 @@
         "indexLastLevelPlayed": 0,
         "amountFoodCollected": 4,
         "totalFoodCollected": 4,
-        "totalNumberMoves": 95,
-        "totalNumberMovesBox": 14,
+        "totalNumberMoves": 128,
+        "totalNumberMovesBox": 25,
         "bestTotalTime": 13.953522682189942,
         "bestFoodCollected": 0,
         "currentRunFoodCollected": 4,

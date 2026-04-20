@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using Sokoban.LevelManagement;
 using Sokoban.GridEditor;
 using Sokoban.GameManagement;
+using YG;
 
 public class PlayerObjects : Block
 {
@@ -145,7 +146,7 @@ public class PlayerObjects : Block
         if (isMoving || !isPossibleMove)
             return;
 
-        Vector2 axisMovement = inputHandler.GetMove();
+        Vector2 axisMovement = GetMovementInput();
 
         if (axisMovement.sqrMagnitude < 0.5f)
         {
@@ -318,6 +319,14 @@ public class PlayerObjects : Block
         return false;
     }*/
 
+    private Vector2 GetMovementInput()
+    {
+        if (YG2.envir.isMobile && MobileJoystickInput.Instance != null && MobileJoystickInput.Instance.HasInput())
+            return MobileJoystickInput.Instance.Move;
+
+        return inputHandler.GetMove();
+    }
+
     /// <summary>
     /// True, если перед игроком неровный блок
     /// </summary>
@@ -340,6 +349,16 @@ public class PlayerObjects : Block
     }
 
     private void OnRotateRight(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        CameraRotation(-90f);
+    }
+
+    public void RotateCameraLeft()
+    {
+        CameraRotation(90f);
+    }
+
+    public void RotateCameraRight()
     {
         CameraRotation(-90f);
     }

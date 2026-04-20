@@ -5,142 +5,197 @@ using Sokoban.LevelManagement;
 
 public class DynamicObjects : Block
 {
-  private bool isMoving = false;
+    private bool isMoving = false;
 
-  private float speed = 2.0f;
+    private float speed = 2.0f;
 
-  private Vector3Int lastPosition;
-  private Vector3 direction;
-  
-  private Vector3Int positionAfterFall;
+    private Vector3Int lastPosition;
+    private Vector3 direction;
 
-  //--------------------------------------
+    private Vector3Int positionAfterFall;
 
-  public Rigidbody Rigidbody { get; private set; }
+    //--------------------------------------
 
-  public bool IsFalling { get; private set; }
+    public Rigidbody Rigidbody { get; private set; }
 
-  //======================================
+    public bool IsFalling { get; private set; }
 
-  protected override void Awake()
-  {
-    base.Awake();
+    //======================================
 
-    Rigidbody = GetComponent<Rigidbody>();
-  }
-
-  private void Start()
-  {
-    lastPosition = Vector3Int.CeilToInt(transform.position);
-    direction = transform.position;
-
-    if (Sokoban.GridEditor.GridEditor.GridEditorEnabled)
-      RemoveRigidbody();
-  }
-
-  private void Update()
-  {
-    if (IsFalling)
+    protected override void Awake()
     {
-      if (transform.position == positionAfterFall)
-      {
-        Rigidbody.useGravity = false;
-        IsFalling = false;
-      }
+        base.Awake();
+
+        Rigidbody = GetComponent<Rigidbody>();
     }
 
-    if (!isMoving)
-      return;
-
-    transform.position = Vector3.MoveTowards(transform.position, lastPosition + direction, speed * Time.deltaTime);
-
-    if (transform.position == lastPosition + direction)
-      isMoving = false;
-  }
-
-  //======================================
-
-  public bool ObjectMove(Vector3 parDirection, float parSpeed)
-  {
-    if (IsBlocked(parDirection))
-      return false;
-
-    if (isMoving)
-      return false;
-
-    isMoving = true;
-    lastPosition = Vector3Int.CeilToInt(transform.position);
-    direction = parDirection;
-    speed = parSpeed;
-    GameManager.Instance.ProgressData.TotalNumberMovesBox++;
-    IsEmptiness();
-    return true;
-  }
-
-  /// <summary>
-  /// True, если движение объекта вперед заблокировано
-  /// </summary>
-  /// <param name="direction">Направление движения</param>
-  private bool IsBlocked(Vector3 direction)
-  {
-    if (Physics.Raycast(transform.position, direction, out RaycastHit hit, 1))
+    /*private void Start()
     {
-      if (hit.collider)
-      {
-        if (hit.collider.TryGetComponent<DecoreObject>(out var decoreObject))
-          return decoreObject.IsEnableBoxCollider;
+      lastPosition = Vector3Int.CeilToInt(transform.position);
+      direction = transform.position;
 
-        if (hit.collider.GetComponent<DynamicObjects>() || hit.collider.GetComponent<StaticObjects>())
-          return true;
+      if (Sokoban.GridEditor.GridEditor.GridEditorEnabled)
+        RemoveRigidbody();
+    }*/
 
-        if (hit.collider.TryGetComponent(out SpikeObject spikeObject))
-          return spikeObject.IsSpikeActivated;
+    private void Start()
+    {
+        lastPosition = Vector3Int.RoundToInt(transform.position);
+        direction = Vector3.zero;
 
-        if (hit.collider.GetComponent<ButtonDoorObject>())
-          return false;
-      }
+        if (Sokoban.GridEditor.GridEditor.GridEditorEnabled)
+            RemoveRigidbody();
     }
 
-    return false;
-  }
-
-  private void IsEmptiness()
-  {
-    var gridLevel = LevelManager.Instance.GridLevel;
-    Vector3Int tempNextPosition = new((int)(lastPosition + direction).x, (int)(lastPosition + direction).y - 1, (int)(lastPosition + direction).z);
-
-    if (!gridLevel.listAllAvailableCells.Contains(tempNextPosition))
+    private void Update()
     {
-      gridLevel.listEmptyCells.Add(tempNextPosition);
-      gridLevel.listAllAvailableCells.Add(tempNextPosition);
+        if (IsFalling)
+        {
+            if (transform.position == positionAfterFall)
+            {
+                Rigidbody.useGravity = false;
+                IsFalling = false;
+            }
+        }
+
+        if (!isMoving)
+            return;
+
+        Vector3 targetPosition = (Vector3)lastPosition + direction;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+        if (Vector3.SqrMagnitude(transform.position - targetPosition) < 0.0001f)
+        {
+            transform.position = targetPosition;
+            isMoving = false;
+        }
+
+        /*transform.position = Vector3.MoveTowards(transform.position, lastPosition + direction, speed * Time.deltaTime);
+
+        if (transform.position == lastPosition + direction)
+            isMoving = false;*/
     }
 
-    if (gridLevel.listEmptyCells.Contains(tempNextPosition))
+    //======================================
+
+    public bool ObjectMove(Vector3 parDirection, float parSpeed)
     {
-      Rigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
+        if (isMoving)
+            return false;
 
-      IsFalling = true;
-      Rigidbody.useGravity = true;
-      positionAfterFall = tempNextPosition;
+        parDirection.y = 0f;
+        parDirection = GetSnappedDirection(parDirection);
 
-      gridLevel.listEmptyCells.Remove(tempNextPosition);
+        if (parDirection == Vector3.zero)
+            return false;
+
+        if (IsBlocked(parDirection))
+            return false;
+
+        isMoving = true;
+        lastPosition = Vector3Int.RoundToInt(transform.position);
+        direction = parDirection;
+        speed = parSpeed;
+
+        GameManager.Instance.ProgressData.TotalNumberMovesBox++;
+        IsEmptiness();
+        return true;
     }
-  }
 
-  /// <summary>
-  /// True, если объект падает
-  /// </summary>
-  /*public bool IsObjectFalling()
-  {
-    return rigidbody.velocity.y < -0.1f;
-  }*/
+    /*public bool ObjectMove(Vector3 parDirection, float parSpeed)
+    {
+        if (IsBlocked(parDirection))
+            return false;
 
-  //======================================
+        if (isMoving)
+            return false;
 
-  public override void RemoveRigidbody()
-  {
-    Destroy(Rigidbody);
-  }
+        isMoving = true;
+        lastPosition = Vector3Int.CeilToInt(transform.position);
+        direction = parDirection;
+        speed = parSpeed;
+        GameManager.Instance.ProgressData.TotalNumberMovesBox++;
+        IsEmptiness();
+        return true;
+    }*/
 
-  //======================================
+    /// <summary>
+    /// True, если движение объекта вперед заблокировано
+    /// </summary>
+    /// <param name="direction">Направление движения</param>
+    private bool IsBlocked(Vector3 direction)
+    {
+        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, 1))
+        {
+            if (hit.collider)
+            {
+                if (hit.collider.TryGetComponent<DecoreObject>(out var decoreObject))
+                    return decoreObject.IsEnableBoxCollider;
+
+                if (hit.collider.GetComponent<DynamicObjects>() || hit.collider.GetComponent<StaticObjects>())
+                    return true;
+
+                if (hit.collider.TryGetComponent(out SpikeObject spikeObject))
+                    return spikeObject.IsSpikeActivated;
+
+                if (hit.collider.GetComponent<ButtonDoorObject>())
+                    return false;
+            }
+        }
+
+        return false;
+    }
+
+    private void IsEmptiness()
+    {
+        var gridLevel = LevelManager.Instance.GridLevel;
+        Vector3Int tempNextPosition = new((int)(lastPosition + direction).x, (int)(lastPosition + direction).y - 1, (int)(lastPosition + direction).z);
+
+        if (!gridLevel.listAllAvailableCells.Contains(tempNextPosition))
+        {
+            gridLevel.listEmptyCells.Add(tempNextPosition);
+            gridLevel.listAllAvailableCells.Add(tempNextPosition);
+        }
+
+        if (gridLevel.listEmptyCells.Contains(tempNextPosition))
+        {
+            Rigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
+
+            IsFalling = true;
+            Rigidbody.useGravity = true;
+            positionAfterFall = tempNextPosition;
+
+            gridLevel.listEmptyCells.Remove(tempNextPosition);
+        }
+    }
+
+    private Vector3 GetSnappedDirection(Vector3 rawDirection)
+    {
+        rawDirection.y = 0f;
+
+        if (rawDirection.sqrMagnitude < 0.0001f)
+            return Vector3.zero;
+
+        if (Mathf.Abs(rawDirection.x) > Mathf.Abs(rawDirection.z))
+            return rawDirection.x > 0f ? Vector3.right : Vector3.left;
+
+        return rawDirection.z > 0f ? Vector3.forward : Vector3.back;
+    }
+
+    /// <summary>
+    /// True, если объект падает
+    /// </summary>
+    /*public bool IsObjectFalling()
+    {
+      return rigidbody.velocity.y < -0.1f;
+    }*/
+
+    //======================================
+
+    public override void RemoveRigidbody()
+    {
+        Destroy(Rigidbody);
+    }
+
+    //======================================
 }
