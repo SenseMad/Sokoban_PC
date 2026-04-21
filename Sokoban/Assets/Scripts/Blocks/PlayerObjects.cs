@@ -319,10 +319,18 @@ public class PlayerObjects : Block
         return false;
     }*/
 
-    private Vector2 GetMovementInput()
+    /*private Vector2 GetMovementInput()
     {
         if (YG2.envir.isMobile && MobileJoystickInput.Instance != null && MobileJoystickInput.Instance.HasInput())
             return MobileJoystickInput.Instance.Move;
+
+        return inputHandler.GetMove();
+    }*/
+
+    private Vector2 GetMovementInput()
+    {
+        if (YG2.envir.isMobile && MobileButtonsInput.Instance != null && MobileButtonsInput.Instance.HasInput())
+            return MobileButtonsInput.Instance.Move;
 
         return inputHandler.GetMove();
     }

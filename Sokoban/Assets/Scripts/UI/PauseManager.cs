@@ -64,6 +64,19 @@ namespace Sokoban.UI
 
         //======================================
 
+        public void Pause()
+        {
+            if (!IsPause)
+            {
+                if (levelManager.LevelCompleted)
+                    return;
+
+                IsPause = true;
+                panelController.ShowPanel(_pausePanel);
+                return;
+            }
+        }
+
         private void OnPause(bool parValue)
         {
             IsPause = false;
