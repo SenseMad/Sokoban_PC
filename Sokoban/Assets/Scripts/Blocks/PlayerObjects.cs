@@ -329,7 +329,7 @@ public class PlayerObjects : Block
 
     private Vector2 GetMovementInput()
     {
-        if (YG2.envir.isMobile && MobileButtonsInput.Instance != null && MobileButtonsInput.Instance.HasInput())
+        if (MobileButtonsInput.Instance != null && MobileButtonsInput.Instance.HasInput())
             return MobileButtonsInput.Instance.Move;
 
         return inputHandler.GetMove();

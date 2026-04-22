@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public sealed class MobileButtonsInput : MonoBehaviour
 {
@@ -19,33 +18,12 @@ public sealed class MobileButtonsInput : MonoBehaviour
         move = Vector2.zero;
     }
 
-    public void PressUp()
-    {
-        move = Vector2.up;
-    }
+    public void PressUp() => move = Vector2.up;
+    public void PressDown() => move = Vector2.down;
+    public void PressLeft() => move = Vector2.left;
+    public void PressRight() => move = Vector2.right;
 
-    public void PressDown()
-    {
-        move = Vector2.down;
-    }
+    public void Release() => move = Vector2.zero;
 
-    public void PressLeft()
-    {
-        move = Vector2.left;
-    }
-
-    public void PressRight()
-    {
-        move = Vector2.right;
-    }
-
-    public void Release()
-    {
-        move = Vector2.zero;
-    }
-
-    public bool HasInput()
-    {
-        return move != Vector2.zero;
-    }
+    public bool HasInput() => move != Vector2.zero;
 }

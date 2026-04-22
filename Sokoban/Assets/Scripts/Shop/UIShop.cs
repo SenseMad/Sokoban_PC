@@ -86,53 +86,62 @@ namespace Sokoban.UI
 
         //======================================
 
+        private void SetActiveButton(int newIndex, bool playSound = true)
+        {
+            if (_listButtons.Count == 0)
+                return;
+
+            newIndex = Mathf.Clamp(newIndex, 0, _listButtons.Count - 1);
+
+            if (indexActiveButton == newIndex)
+                return;
+
+            IsSelectedButton = false;
+
+            indexActiveButton = newIndex;
+            LocationElements();
+            UpdateArrows();
+
+            if (playSound)
+                Sound();
+
+            IsSelectedButton = true;
+        }
+
+        private void UpdateArrows()
+        {
+            if (_arrowLeft != null)
+                _arrowLeft.SetActive(indexActiveButton > 0);
+
+            if (_arrowRight != null)
+                _arrowRight.SetActive(indexActiveButton < _listButtons.Count - 1);
+        }
+
         public void Next()
         {
-            if (Time.time > nextTimeMoveNextValue)
-            {
-                nextTimeMoveNextValue = Time.time + timeMoveNextValue;
+            if (Time.time <= nextTimeMoveNextValue)
+                return;
 
-                if (indexActiveButton + 1 > _listButtons.Count - 1)
-                    return;
+            nextTimeMoveNextValue = Time.time + timeMoveNextValue;
 
-                _arrowLeft.SetActive(true);
-                IsSelectedButton = false;
+            if (indexActiveButton + 1 > _listButtons.Count - 1)
+                return;
 
-                indexActiveButton++;
-                LocationElements();
-
-                Sound();
-                IsSelectedButton = true;
-
-                if (indexActiveButton + 1 > _listButtons.Count - 1)
-                    _arrowRight.SetActive(false);
-            }
+            SetActiveButton(indexActiveButton + 1);
         }
 
         public void Back()
         {
-            if (Time.time > nextTimeMoveNextValue)
-            {
-                nextTimeMoveNextValue = Time.time + timeMoveNextValue;
+            if (Time.time <= nextTimeMoveNextValue)
+                return;
 
-                if (indexActiveButton - 1 < 0)
-                {
-                    return;
-                }
+            nextTimeMoveNextValue = Time.time + timeMoveNextValue;
 
-                _arrowRight.SetActive(true);
-                IsSelectedButton = false;
+            if (indexActiveButton - 1 < 0)
+                return;
 
-                indexActiveButton--;
-                LocationElements();
-
-                Sound();
-                IsSelectedButton = true;
-
-                if (indexActiveButton - 1 < 0)
-                    _arrowLeft.SetActive(false);
-            }
-        }
+            SetActiveButton(indexActiveButton - 1);
+        }        
 
         private void DisplayButtonsUI()
         {
@@ -146,25 +155,25 @@ namespace Sokoban.UI
                 if (gameManager.ProgressData.PurchasedSkins.Contains(skinData.IndexSkin))
                 {
                     shopButton.UnSelect();
+
                     if (gameManager.ProgressData.CurrentActiveIndexSkin == skinData.IndexSkin)
                         shopButton.Select();
                 }
                 else
+                {
                     shopButton.NotPurchased();
+                }
 
-                shopButton.Button.onClick.AddListener(() => SelectSkin(skinData, shopButton));
+                shopButton.Initialize(skinData);
+
+                int buttonIndex = _listButtons.Count;
+                shopButton.Button.onClick.AddListener(() => OnShopButtonClicked(buttonIndex, skinData, shopButton));
 
                 _listButtons.Add(shopButton.Button);
                 listShopButtons.Add(shopButton);
-
-                shopButton.Initialize(skinData);
             }
 
-            if (indexActiveButton - 1 < 0)
-                _arrowLeft.SetActive(false);
-            if (indexActiveButton + 1 > _listButtons.Count - 1)
-                _arrowRight.SetActive(false);
-
+            UpdateArrows();
             LocationElements();
         }
 
@@ -180,6 +189,17 @@ namespace Sokoban.UI
         }
 
         //======================================
+
+        private void OnShopButtonClicked(int buttonIndex, SkinData skinData, ShopButton shopButton)
+        {
+            if (indexActiveButton != buttonIndex)
+            {
+                SetActiveButton(buttonIndex);
+                return;
+            }
+
+            SelectSkin(skinData, shopButton);
+        }
 
         private void SelectSkin(SkinData parSkinData, ShopButton parShopButton)
         {
@@ -261,40 +281,14 @@ namespace Sokoban.UI
 
                 if (inputHandler.GetChangingValuesInput() > 0)
                 {
-                    if (indexActiveButton + 1 > _listButtons.Count - 1)
-                        return;
-
-                    _arrowLeft.SetActive(true);
-                    IsSelectedButton = false;
-
-                    indexActiveButton++;
-                    LocationElements();
-
-                    Sound();
-                    IsSelectedButton = true;
-
-                    if (indexActiveButton + 1 > _listButtons.Count - 1)
-                        _arrowRight.SetActive(false);
+                    if (indexActiveButton + 1 <= _listButtons.Count - 1)
+                        SetActiveButton(indexActiveButton + 1);
                 }
 
                 if (inputHandler.GetChangingValuesInput() < 0)
                 {
-                    if (indexActiveButton - 1 < 0)
-                    {
-                        return;
-                    }
-
-                    _arrowRight.SetActive(true);
-                    IsSelectedButton = false;
-
-                    indexActiveButton--;
-                    LocationElements();
-
-                    Sound();
-                    IsSelectedButton = true;
-
-                    if (indexActiveButton - 1 < 0)
-                        _arrowLeft.SetActive(false);
+                    if (indexActiveButton - 1 >= 0)
+                        SetActiveButton(indexActiveButton - 1);
                 }
             }
 
